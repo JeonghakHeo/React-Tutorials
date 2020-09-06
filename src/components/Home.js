@@ -1,12 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
+// npm install axios 
+// It basically allows us to go out and fetch data from external source
+// Use lifecycle hooks to go out and grab data using axios
 
-const Home = () => {
-  return(
-    <div className="container">
-      <h4 className="center">Home</h4>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus incidunt expedita tempora laboriosam quae aliquam omnis aliquid error repudiandae ad itaque corporis tempore suscipit, pariatur dolorum commodi, recusandae veritatis dolor?</p>
-    </div>
-  )
+// To use lifecycle hooks we need to convert functional component to calss-based component
+// function components can't use lifecycle hooks
+class Home extends Component {
+  state = {
+    posts: [ ]
+  }
+  componentDidMount(){
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+    .then(res => {
+      this.setState({
+        posts: res.data.slice(0,10)
+      })
+    })
+  }
+
+  render(){
+    const { posts } = this.state;
+    const postList = posts.length ? (
+      posts.map((post) => {
+        return (
+          <div className="post card" key={post.id}>
+            <div className="card-content">
+              <span className="card-title">{post.title}</span>
+              <p>{post.body}</p>
+            </div>
+          </div>
+        )
+      })
+    ) : (
+      <div className="center">No posts yet</div>
+    )
+    return(
+      <div className="container">
+        <h4 className="center">Home</h4>
+        {postList}
+      </div>
+    )
+  }
 }
-
 export default Home

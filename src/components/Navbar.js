@@ -7,9 +7,9 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 // Therefore props.history.push didn't work without "withRouter"
 const Navbar = (props) => {
   // console.log(props)
-  setTimeout(() => {
-    props.history.push('/about')
-  }, 2000)
+  // setTimeout(() => {
+  //   props.history.push('/about')
+  // }, 2000)
   return(
     <nav className="nav-wrapper red darken-3">
       <div className="container">
