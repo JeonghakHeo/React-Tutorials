@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Contact = () => {
+// Because the router loads up Contact, Home, About it automatically 
+// attatches extra information to the 'props' object
+const Contact = (props) => {
+  // console.log(props)
+  // setTimeout(() => {
+  //   props.history.push('/about')
+  // }, 2000)
+  
   return(
     <div className="container">
       <h4 className="center">Contact</h4>

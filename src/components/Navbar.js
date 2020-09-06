@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 
-const Navbar = () => {
+// withRouter is a higher order component, giving Navbar a supercharge
+// Because Navbar is not wrapped in <Route /> in App.js 
+// it doesn't have object like history if looked up on console
+// Therefore props.history.push didn't work without "withRouter"
+const Navbar = (props) => {
+  console.log(props)
+  // setTimeout(() => {
+  //   props.history.push('/about')
+  // }, 2000)
   return(
     <nav className="nav-wrapper red darken-3">
       <div className="container">
@@ -16,4 +24,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default withRouter(Navbar)
