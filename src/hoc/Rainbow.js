@@ -1,6 +1,6 @@
 import React from 'react';
 
-// creating customized own higher oder component to randomize text color
+// creating customized own higher order component to randomize text color
 // much like "withRouter"
 const Rainbow = (WrappedComponent) => {
 
@@ -13,7 +13,7 @@ const Rainbow = (WrappedComponent) => {
         <div className={className}>
           <WrappedComponent {...props}/>
         </div>
-      )
+      ) 
     }
 
 }
