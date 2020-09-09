@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Pokeball from'../pokeball.png'
+import Pokeball from'../pokeball.png';
+import { connect } from 'react-redux';
+// need to connect this component to our redux store (central data store)
+// need to import a higher order component from the library so we can use it to connect redux
+
 // npm install axios 
 // It basically allows us to go out and fetch data from external source
 // Use lifecycle hooks to go out and grab data using axios
@@ -9,20 +12,9 @@ import Pokeball from'../pokeball.png'
 // To use lifecycle hooks we need to convert functional component to class-based component
 // function components can't use lifecycle hooks
 class Home extends Component {
-  state = {
-    posts: [ ]
-  }
-  componentDidMount(){
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-    .then(res => {
-      this.setState({
-        posts: res.data.slice(0,10)
-      })
-    })
-  }
-
   render(){
-    const { posts } = this.state;
+    console.log(this.props)
+    const { posts } = this.props;
     const postList = posts.length ? (
       posts.map((post) => {
         return (
@@ -48,5 +40,13 @@ class Home extends Component {
     )
   }
 }
-export default Home
 
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts
+  }
+}
+
+export default connect(mapStateToProps)(Home)
+// connect is a function that returns a higher order component then it wraps Home
+// so it connects Home to our redux store
