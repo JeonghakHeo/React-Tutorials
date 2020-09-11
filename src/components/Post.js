@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 // we automatically get props in class-based components
 // when the component is being used as a route like in 
-// App.js 
+// App.js <Route path='/:post_id' component={Post} />
+// we get access to extra info on the props object
+
 class Post extends Component {
   state = {
     id: null
