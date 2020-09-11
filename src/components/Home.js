@@ -41,7 +41,10 @@ class Home extends Component {
   }
 }
 
+// get access to the store (redux store) and grab data from the state of the store
+// and attatch them to the props by returning an object
 const mapStateToProps = (state) => {
+ // this object represents the different properties we want to add to the props
   return {
     posts: state.posts
   }
