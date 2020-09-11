@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// we automatically get props in class-based components
+// when the component is being used as a route like in 
+// App.js 
 class Post extends Component {
   state = {
     id: null
