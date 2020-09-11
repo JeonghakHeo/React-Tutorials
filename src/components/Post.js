@@ -20,7 +20,8 @@ class Post extends Component {
     )
   }
 }
-
+// ownProps refers to the props of this Post component that is before 
+// we attach additional props from redux store 
 const mapStateToProps = (state, ownProps) => {
   let id = ownProps.match.params.post_id;
   return {
